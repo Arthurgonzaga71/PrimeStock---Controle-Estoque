@@ -1,31 +1,10 @@
-# Node
+# Node modules
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+frontend/node_modules/
+backend/node_modules/
 
-# Env
+# Arquivos sensíveis
 .env
-
-# Build
-dist/
-build/
-
-# OS / Editor
-.DS_Store
-.vscode/
-
-# Uploads e dados locais
-uploads/
-backups/
-exports/
-
-# Arquivos soltos
-*.rar
-*.zip
-*.txt
 banco.txt
-26-11-2025/
-CONTROLE ESTOQUE/
-Resumão/
-banco/
+backups/
+uploads/
