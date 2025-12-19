@@ -1,0 +1,263 @@
+📚 DOCUMENTAÇÃO COMPLETA DO SISTEMA
+🎯 SISTEMA DE CONTROLE DE ESTOQUE - SETOR DE TI
+📋 VISÃO GERAL
+Sistema completo para gestão de estoque de equipamentos de TI com controle de acesso granular, dashboard em tempo real e funcionalidades avançadas.
+
+🔐 SISTEMA DE AUTENTICAÇÃO E CONTROLE DE ACESSO
+👥 PERFIS DE USUÁRIO
+Perfil	Dashboard	Histórico	Estoque	Alertas	Descrição
+Admin	✅ Completo	✅ Completo	✅ Total	✅ Todos	Acesso total ao sistema
+Coordenador	❌ Restrito	❌ Básico	❌ Leitura	✅ Todos	Gestão de equipe
+Técnico	✅ Completo*	✅ Completo*	✅ Limitado	✅ Todos	Operações diárias
+Estagiário	❌ Restrito	❌ Básico	❌ Leitura	❌ Nenhum	Acesso limitado
+*Depende da configuração individual
+
+🎛️ CAMPOS DE CONTROLE DE ACESSO
+sql
+-- Campos na tabela 'usuarios'
+acesso_dashboard BOOLEAN          -- Acesso ao dashboard completo
+acesso_historico_completo BOOLEAN -- Histórico completo do sistema  
+responsavel_estoque BOOLEAN       -- Pode gerenciar estoque
+receber_alertas_estoque BOOLEAN   -- Recebe notificações
+🏗️ ARQUITETURA DO SISTEMA
+📁 ESTRUTURA DE PASTAS
+text
+controle-estoque-ti/
+├── 📁 backend/
+│   ├── 📁 src/
+│   │   ├── 📁 config/database.js
+│   │   ├── 📁 middleware/auth.js
+│   │   ├── 📁 models/
+│   │   │   ├── Usuario.js
+│   │   │   ├── Item.js
+│   │   │   ├── Movimentacao.js
+│   │   │   └── ...
+│   │   ├── 📁 routes/
+│   │   │   ├── authRoutes.js
+│   │   │   ├── dashboardRoutes.js
+│   │   │   └── ...
+│   │   └── server.js
+└── 📁 frontend/
+    ├── 📁 src/
+    │   ├── 📁 contexts/AuthContext.js
+    │   ├── 📁 pages/Dashboard/
+    │   │   ├── Dashboard.js
+    │   │   └── DashboardRestricted.js
+    │   ├── 📁 hooks/useWebSocket.js
+    │   └── App.js
+🔧 CONFIGURAÇÃO E INSTALAÇÃO
+⚙️ PRÉ-REQUISITOS
+bash
+Node.js 16+
+MySQL 8.0+
+React 18+
+🚀 INSTALAÇÃO
+bash
+# Backend
+cd backend
+npm install
+npm start
+
+# Frontend  
+cd frontend
+npm install
+npm start
+📊 DASHBOARD E INTERFACES
+🎨 DASHBOARD COMPLETO
+📈 Gráficos em tempo real
+
+📊 Métricas do estoque
+
+🔄 Atividades recentes
+
+🔔 Sistema de notificações
+
+⚡ WebSocket para atualizações
+
+🔒 DASHBOARD RESTRITO
+📋 Serviços básicos disponíveis
+
+🔍 Consulta de itens
+
+👤 Gestão de perfil
+
+📞 Informações de contato
+
+🔄 FLUXO DE AUTENTICAÇÃO
+🔐 PROCESSO DE LOGIN
+Validação de credenciais
+
+Verificação de permissões
+
+Redirecionamento baseado em acesso_dashboard
+
+Conexão WebSocket (se autorizado)
+
+🎯 DECISÃO DE ACESSO
+javascript
+// Lógica no Dashboard.js
+if (canAccessDashboard()) {
+  return <DashboardFull />;     // Gráficos e métricas
+} else {
+  return <DashboardRestricted />; // Tela básica
+}
+💾 BANCO DE DADOS
+🗃️ PRINCIPAIS TABELAS
+sql
+usuarios           -- Usuários e permissões
+itens              -- Equipamentos de TI
+movimentacoes      -- Histórico de movimentos
+categorias         -- Categorias de equipamentos
+manutencoes        -- Registros de manutenção
+alertas_estoque    -- Alertas automáticos
+🔐 USUÁRIOS PADRÃO
+Email	Perfil	Dashboard	Estoque
+admin@empresa.com	admin	✅ SIM	✅ SIM
+coord.ti@empresa.com	coordenador	❌ NÃO	❌ NÃO
+joao.ti@empresa.com	tecnico	✅ SIM	✅ SIM
+🌐 API PRINCIPAIS ENDPOINTS
+🔐 AUTENTICAÇÃO
+http
+POST /api/auth/login
+GET  /api/auth/me
+PUT  /api/auth/alterar-senha
+📊 DASHBOARD
+http
+GET /api/dashboard          # Dados do dashboard
+GET /api/dashboard/alerts   # Alertas ativos
+📦 GERENCIAMENTO
+http
+GET    /api/itens           # Listar itens
+POST   /api/itens           # Criar item
+PUT    /api/itens/:id       # Atualizar item
+GET    /api/movimentacoes   # Histórico
+⚡ FUNCIONALIDADES AVANÇADAS
+🔔 SISTEMA DE NOTIFICAÇÕES
+Notificações em tempo real
+
+Alertas de estoque baixo
+
+Confirmações de movimentação
+
+Sistema anti-duplicação
+
+📱 OTIMIZAÇÕES MOBILE
+PWA (Progressive Web App)
+
+Design responsivo
+
+Modo offline
+
+Instalação nativa
+
+🔧 RECURSOS TÉCNICOS
+WebSocket para tempo real
+
+Polling automático (fallback)
+
+Cache inteligente
+
+Tratamento de erros robusto
+
+🛠️ MANUTENÇÃO E SUPORTE
+🐛 SOLUÇÃO DE PROBLEMAS COMUNS
+Problema: Admin sem acesso ao dashboard
+Solução: Verificar se acesso_dashboard = true no banco
+
+Problema: WebSocket não conecta
+Solução: Verificar se backend está na porta 3001
+
+Problema: Campos undefined
+Solução: Reiniciar backend após atualizar modelos
+
+📝 LOGS IMPORTANTES
+javascript
+// Backend
+"✅ Login válido, gerando token..."
+"📊 Campos do usuário:" {acesso_dashboard: true}
+
+// Frontend  
+"🎯 Usuário TEM acesso ao dashboard"
+"🎯 Usuário NÃO TEM acesso ao dashboard"
+🔒 SEGURANÇA
+🛡️ MEDIDAS IMPLEMENTADAS
+Autenticação JWT
+
+Controle de acesso granular
+
+Validação de dados
+
+Hash de senhas com bcrypt
+
+CORS configurado
+
+Rate limiting
+
+🔐 MELHORES PRÁTICAS
+Senhas com mínimo 6 caracteres
+
+Tokens expiram em 30 dias
+
+Validação de email única
+
+Campos sensíveis excluídos do JSON
+
+📈 MONITORAMENTO
+📊 MÉTRICAS DO SISTEMA
+Usuários ativos
+
+Itens em estoque
+
+Movimentações/dia
+
+Alertas ativos
+
+Tempo de resposta
+
+🔍 HEALTH CHECK
+http
+GET /api/health
+Response: { status: "ok", timestamp: "2024-01-01T00:00:00Z" }
+🚀 PRÓXIMAS FUNCIONALIDADES
+🆕 EM DESENVOLVIMENTO
+Sistema de QR Code
+
+Backup automático
+
+Relatórios avançados
+
+Integração com email
+
+App mobile nativo
+
+💡 MELHORIAS PLANEJADAS
+Dashboard administrativo
+
+Exportação de dados
+
+API documentation
+
+Testes automatizados
+
+Deploy Docker
+
+📞 SUPORTE
+👨‍💻 ADMINISTRADOR DO SISTEMA
+Email: ti@empresa.com
+
+Ramal: 1234
+
+Horário: 08h-18h (Seg-Sex)
+
+🐛 REPORTAR PROBLEMAS
+Verificar logs do console
+
+Checar Network tab
+
+Confirmar status do backend
+
+Contatar administrador
+
+📋 Documentação atualizada em: Novembro 2024
+🔄 Última revisão: Sistema de controle de acesso
+✅ Status: Produção

@@ -1,0 +1,31 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env
+.env
+
+# Build
+dist/
+build/
+
+# OS / Editor
+.DS_Store
+.vscode/
+
+# Uploads e dados locais
+uploads/
+backups/
+exports/
+
+# Arquivos soltos
+*.rar
+*.zip
+*.txt
+banco.txt
+26-11-2025/
+CONTROLE ESTOQUE/
+Resumão/
+banco/
