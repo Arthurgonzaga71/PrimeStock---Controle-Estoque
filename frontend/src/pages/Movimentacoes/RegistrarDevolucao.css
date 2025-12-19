@@ -1,0 +1,622 @@
+/* src/pages/Movimentacoes/RegistrarDevolucao.css */
+
+/* Container principal */
+.registrar-devolucao-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  min-height: calc(100vh - 48px);
+}
+
+/* 🎯 CABEÇALHO */
+.registrar-devolucao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding: 28px;
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(46, 204, 113, 0.2);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.registrar-devolucao-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.registrar-devolucao-header-content h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: -0.5px;
+}
+
+.registrar-devolucao-header-content p {
+  font-size: 16px;
+  opacity: 0.95;
+  max-width: 700px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ❌ ALERTAS DE ERRO */
+.registrar-devolucao-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 24px;
+  margin-bottom: 28px;
+  border-radius: 12px;
+  background: linear-gradient(to right, #fee, #fff5f5);
+  border-left: 4px solid #e74c3c;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.1);
+  animation: slideIn 0.3s ease;
+}
+
+.registrar-devolucao-alert-icon {
+  font-size: 20px;
+  color: #e74c3c;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.registrar-devolucao-alert-content {
+  flex: 1;
+}
+
+.registrar-devolucao-alert-content strong {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+/* 📋 RESUMO DA SAÍDA */
+.registrar-devolucao-resumo-saida {
+  margin-bottom: 32px;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.registrar-devolucao-resumo-saida h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.registrar-devolucao-resumo-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #3498db;
+}
+
+.registrar-devolucao-resumo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.registrar-devolucao-resumo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.registrar-devolucao-resumo-label {
+  font-size: 13px;
+  color: #7f8c8d;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.registrar-devolucao-resumo-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.registrar-devolucao-resumo-value strong {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.registrar-devolucao-patrimonio {
+  background: #f1f8ff;
+  color: #0366d6;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.registrar-devolucao-quantidade {
+  background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+  color: #155724;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.registrar-devolucao-departamento {
+  background: #f8f9fa;
+  color: #6c757d;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.registrar-devolucao-data-devolucao {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  color: #856404;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.registrar-devolucao-resumo-observacao {
+  padding-top: 20px;
+  border-top: 1px solid #e8eff5;
+  margin-top: 20px;
+}
+
+.registrar-devolucao-resumo-observacao .registrar-devolucao-resumo-label {
+  margin-bottom: 8px;
+}
+
+.registrar-devolucao-resumo-observacao .registrar-devolucao-resumo-value {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  font-style: italic;
+  color: #495057;
+  line-height: 1.5;
+}
+
+/* 📝 FORMULÁRIO DE DEVOLUÇÃO */
+.registrar-devolucao-form {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Seções do formulário */
+.registrar-devolucao-form-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.registrar-devolucao-form-section {
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e8eff5;
+}
+
+.registrar-devolucao-form-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.registrar-devolucao-form-section h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #27ae60;
+}
+
+/* ✅ CONFIRMAÇÃO CARD */
+.registrar-devolucao-confirmacao-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 12px;
+  border: 1px solid #a5d6a7;
+}
+
+.registrar-devolucao-confirmacao-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.registrar-devolucao-confirmacao-content {
+  flex: 1;
+}
+
+.registrar-devolucao-confirmacao-content h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 12px;
+}
+
+.registrar-devolucao-confirmacao-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #388e3c;
+}
+
+.registrar-devolucao-confirmacao-content strong {
+  color: #1b5e20;
+  font-weight: 600;
+}
+
+/* Grupos de formulário */
+.registrar-devolucao-form-group {
+  margin-bottom: 20px;
+}
+
+.registrar-devolucao-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.registrar-devolucao-form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #34495e;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.registrar-devolucao-form-group textarea {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #e0e6ed;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.registrar-devolucao-form-group textarea:focus {
+  outline: none;
+  border-color: #27ae60;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+}
+
+/* Texto de ajuda */
+.registrar-devolucao-form-help {
+  font-size: 13px;
+  color: #7f8c8d;
+  margin-top: 8px;
+  font-style: italic;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #6c757d;
+}
+
+/* 📤 AÇÕES DO FORMULÁRIO */
+.registrar-devolucao-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid #e8eff5;
+}
+
+/* BOTÕES PERSONALIZADOS */
+.registrar-devolucao-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  text-decoration: none;
+  gap: 10px;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.registrar-devolucao-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.registrar-devolucao-btn:active {
+  transform: translateY(0);
+}
+
+.registrar-devolucao-btn--secondary {
+  background: linear-gradient(to right, #95a5a6, #7f8c8d);
+  color: white;
+  border: none;
+}
+
+.registrar-devolucao-btn--secondary:hover {
+  background: linear-gradient(to right, #7f8c8d, #6c7b7d);
+}
+
+.registrar-devolucao-btn--success {
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.registrar-devolucao-btn--success:hover {
+  background: linear-gradient(135deg, #229954 0%, #27ae60 100%);
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+}
+
+.registrar-devolucao-btn--success::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.registrar-devolucao-btn--success:hover::before {
+  left: 100%;
+}
+
+.registrar-devolucao-btn-back {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.registrar-devolucao-btn-back:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 🌀 LOADING */
+.registrar-devolucao-page-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* Estado do item (se houver) */
+.registrar-devolucao-estado-item {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.registrar-devolucao-estado-item h4 {
+  color: #856404;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.registrar-devolucao-opcoes-estado {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.registrar-devolucao-opcao-estado {
+  padding: 10px 16px;
+  background: white;
+  border: 2px solid #e0e6ed;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.registrar-devolucao-opcao-estado:hover {
+  border-color: #3498db;
+  transform: translateY(-2px);
+}
+
+.registrar-devolucao-opcao-estado.ativo {
+  border-color: #27ae60;
+  background: #e8f5e9;
+}
+
+.registrar-devolucao-opcao-estado input {
+  margin-right: 8px;
+}
+
+/* Placeholder estilizado */
+.registrar-devolucao-form-group textarea::placeholder {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .registrar-devolucao-container {
+    padding: 16px;
+  }
+  
+  .registrar-devolucao-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+  }
+  
+  .registrar-devolucao-header-content h1 {
+    font-size: 26px;
+  }
+  
+  .registrar-devolucao-form {
+    padding: 24px;
+  }
+  
+  .registrar-devolucao-resumo-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .registrar-devolucao-confirmacao-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .registrar-devolucao-confirmacao-icon {
+    font-size: 40px;
+  }
+  
+  .registrar-devolucao-form-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .registrar-devolucao-btn {
+    width: 100%;
+  }
+  
+  .registrar-devolucao-opcoes-estado {
+    flex-direction: column;
+  }
+}
+
+/* Animação de checkmark */
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.registrar-devolucao-checkmark {
+  animation: checkmark 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Badge de status */
+.registrar-devolucao-status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.registrar-devolucao-status-badge.saida {
+  background: #ffeaa7;
+  color: #856404;
+}
+
+.registrar-devolucao-status-badge.entrada {
+  background: #c8e6c9;
+  color: #1b5e20;
+}
+
+/* Timestamp da movimentação */
+.registrar-devolucao-timestamp {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-top: 4px;
+}

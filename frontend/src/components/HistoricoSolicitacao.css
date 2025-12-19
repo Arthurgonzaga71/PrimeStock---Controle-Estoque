@@ -1,0 +1,324 @@
+/* HistoricoSolicitacao.css - VERSÃO MELHORADA */
+
+.historico-solicitacao {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.historico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.historico-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.historico-icon {
+    font-size: 1.5rem;
+}
+
+.badge-contador {
+    background: #3498db;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 🎯 ESTILO DA TABELA (SEU FORMATO) */
+.historico-tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.historico-tabela-header {
+    display: grid;
+    grid-template-columns: 150px 200px 2fr 100px 150px 100px 100px 150px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+    padding: 12px 15px;
+}
+
+.historico-tabela-body {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.historico-linha {
+    display: grid;
+    grid-template-columns: 150px 200px 2fr 100px 150px 100px 100px 150px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+    align-items: center;
+}
+
+.historico-linha:hover {
+    background-color: #f8f9fa !important;
+}
+
+.col-data {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.col-acao {
+    font-weight: 500;
+}
+
+.acao-com-icone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.acao-icone {
+    font-size: 1.1rem;
+}
+
+.acao-texto {
+    color: #333;
+}
+
+.col-descricao {
+    color: #555;
+    line-height: 1.4;
+}
+
+.codigo-badge {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.prioridade-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.prioridade-alta {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.prioridade-media {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.prioridade-baixa {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.prioridade-urgente {
+    background: #fce4ec;
+    color: #ad1457;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.status-aprovada {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-pendente {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.status-rascunho {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.status-rejeitada {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.status-entregue {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-cancelada {
+    background: #f5f5f5;
+    color: #616161;
+}
+
+.usuario-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.usuario-nome {
+    font-weight: 500;
+    color: #333;
+}
+
+.usuario-perfil {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* LOADING E VAZIO */
+.historico-loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.historico-vazio {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.vazio-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1200px) {
+    .historico-tabela-header,
+    .historico-linha {
+        grid-template-columns: 140px 180px 1.5fr 90px 140px 90px 90px 140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .historico-tabela-container {
+        font-size: 0.9rem;
+    }
+    
+    .historico-tabela-header,
+    .historico-linha {
+        grid-template-columns: 120px 160px 1.2fr 80px 120px 80px 80px 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .historico-tabela-container {
+        font-size: 0.85rem;
+    }
+    
+    .historico-linha {
+        display: block;
+        padding: 15px;
+        margin-bottom: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+    }
+    
+    .historico-linha > div {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px dashed #eee;
+    }
+    
+    .historico-linha > div:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    
+    .col-data::before {
+        content: "📅 Data: ";
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .col-acao::before {
+        content: "🎯 Ação: ";
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .col-descricao::before {
+        content: "📝 Descrição: ";
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .col-solicitacao::before {
+        content: "🏷️ Código: ";
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .col-titulo::before {
+        content: "📋 Título: ";
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .col-prioridade::before {
+        content: "⚡ Prioridade: ";
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .col-status::before {
+        content: "🔄 Status: ";
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .col-usuario::before {
+        content: "👤 Usuário: ";
+        font-weight: 600;
+        color: #333;
+    }
+}

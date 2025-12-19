@@ -1,0 +1,611 @@
+/* src/components/MainContainer/MainContainer.css */
+
+/* =============================================
+   VARIÁVEIS E RESET
+   ============================================= */
+:root {
+  --main-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --main-text: #2d3748;
+  --main-accent: #4299e1;
+  --main-border: #e2e8f0;
+  --main-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --main-card-bg: #ffffff;
+  --main-radius: 16px;
+  --main-padding: 24px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar-width: 280px;
+  --header-height: 70px;
+}
+
+/* =============================================
+   CONTAINER PRINCIPAL
+   ============================================= */
+
+.main-container {
+  min-height: 100vh;
+  background: var(--main-bg);
+  color: var(--main-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: var(--header-height);
+  padding-left: var(--sidebar-width);
+  transition: var(--transition);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* =============================================
+   CONTEÚDO PRINCIPAL
+   ============================================= */
+
+.main-content {
+  padding: var(--main-padding);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================
+   CARDS PRINCIPAIS
+   ============================================= */
+
+.main-content > .card {
+  background: var(--main-card-bg);
+  border-radius: var(--main-radius);
+  box-shadow: var(--main-shadow);
+  border: 1px solid var(--main-border);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.main-content > .card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* =============================================
+   TIPOS DE LAYOUT
+   ============================================= */
+
+/* Layout Compacto */
+.main-container.compact .main-content {
+  padding: 16px;
+  max-width: 1200px;
+}
+
+/* Layout Largo */
+.main-container.wide .main-content {
+  max-width: 1800px;
+  padding: 32px;
+}
+
+/* Layout Sem Sidebar */
+.main-container.no-sidebar {
+  padding-left: 0;
+}
+
+/* Layout Sem Header */
+.main-container.no-header {
+  padding-top: 0;
+}
+
+/* Layout Centrado */
+.main-container.centered .main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height));
+}
+
+/* Layout em Grid */
+.main-container.grid .main-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* =============================================
+   ANIMAÇÕES DE PÁGINA
+   ============================================= */
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pageSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+
+.main-content.page-enter {
+  animation: pageSlideIn 0.3s ease forwards;
+}
+
+.main-content.page-exit {
+  animation: pageSlideOut 0.3s ease forwards;
+}
+
+/* =============================================
+   BACKGROUND PATTERNS
+   ============================================= */
+
+.main-container.pattern-dots::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(var(--main-accent) 1px, transparent 1px),
+    radial-gradient(var(--main-accent) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-container.pattern-lines::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, 
+      transparent 24px, 
+      rgba(66, 153, 225, 0.05) 24px, 
+      rgba(66, 153, 225, 0.05) 25px, 
+      transparent 25px
+    );
+  background-size: 50px 50px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-container.pattern-grid::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(66, 153, 225, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 153, 225, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =============================================
+   EFEITO DE VIDRO (GLASSMORPHISM)
+   ============================================= */
+
+.main-container.glass .main-content > .card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.main-container.glass.dark {
+  --main-bg: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  --main-text: #e2e8f0;
+}
+
+.main-container.glass.dark .main-content > .card {
+  background: rgba(45, 55, 72, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =============================================
+   TEMAS DE CORES
+   ============================================= */
+
+/* Tema Azul */
+.main-container.theme-blue {
+  --main-accent: #4299e1;
+  --main-bg: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%);
+}
+
+/* Tema Verde */
+.main-container.theme-green {
+  --main-accent: #38a169;
+  --main-bg: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+}
+
+/* Tema Roxo */
+.main-container.theme-purple {
+  --main-accent: #9f7aea;
+  --main-bg: linear-gradient(135deg, #faf5ff 0%, #e9d8fd 100%);
+}
+
+/* Tema Vermelho */
+.main-container.theme-red {
+  --main-accent: #e53e3e;
+  --main-bg: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+}
+
+/* Tema Escuro */
+.main-container.theme-dark {
+  --main-bg: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  --main-text: #e2e8f0;
+  --main-card-bg: #2d3748;
+  --main-border: #4a5568;
+}
+
+/* =============================================
+   SEÇÕES DO CONTEÚDO
+   ============================================= */
+
+.main-content > section {
+  margin-bottom: 32px;
+  animation: fadeInUp 0.5s ease;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-content > section:nth-child(1) { animation-delay: 0.1s; }
+.main-content > section:nth-child(2) { animation-delay: 0.2s; }
+.main-content > section:nth-child(3) { animation-delay: 0.3s; }
+.main-content > section:nth-child(4) { animation-delay: 0.4s; }
+.main-content > section:nth-child(5) { animation-delay: 0.5s; }
+
+/* =============================================
+   HEADINGS
+   ============================================= */
+
+.main-content h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--main-text);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--main-accent), #3182ce);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.main-content h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--main-text);
+  margin-bottom: 12px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.main-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--main-accent), transparent);
+  border-radius: 2px;
+}
+
+.main-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--main-text);
+  margin-bottom: 8px;
+}
+
+/* =============================================
+   RESPONSIVIDADE
+   ============================================= */
+
+@media (max-width: 1200px) {
+  :root {
+    --sidebar-width: 70px;
+  }
+  
+  .main-container {
+    padding-left: 70px;
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-container {
+    padding-left: 0;
+  }
+  
+  .main-content {
+    padding: 16px;
+  }
+  
+  .main-content h1 {
+    font-size: 28px;
+  }
+  
+  .main-content h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 60px;
+  }
+  
+  .main-container {
+    padding-top: 60px;
+  }
+  
+  .main-content {
+    padding: 12px;
+  }
+  
+  .main-content h1 {
+    font-size: 24px;
+  }
+  
+  .main-content h2 {
+    font-size: 20px;
+  }
+  
+  .main-content h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    padding-top: 56px;
+  }
+  
+  .main-content {
+    padding: 8px;
+  }
+  
+  .main-content h1 {
+    font-size: 22px;
+  }
+  
+  .main-content h2 {
+    font-size: 18px;
+  }
+}
+
+/* =============================================
+   UTILITÁRIOS
+   ============================================= */
+
+/* Espaçamentos */
+.main-content .spacing-sm {
+  margin-bottom: 16px;
+}
+
+.main-content .spacing-md {
+  margin-bottom: 24px;
+}
+
+.main-content .spacing-lg {
+  margin-bottom: 32px;
+}
+
+.main-content .spacing-xl {
+  margin-bottom: 48px;
+}
+
+/* Larguras */
+.main-content .width-full {
+  width: 100%;
+}
+
+.main-content .width-half {
+  width: 50%;
+}
+
+.main-content .width-third {
+  width: 33.333%;
+}
+
+@media (max-width: 768px) {
+  .main-content .width-half,
+  .main-content .width-third {
+    width: 100%;
+  }
+}
+
+/* Centralização */
+.main-content .center-text {
+  text-align: center;
+}
+
+.main-content .center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* =============================================
+   BORDAS E SOMBRAS
+   ============================================= */
+
+.main-content .border {
+  border: 1px solid var(--main-border);
+}
+
+.main-content .border-top {
+  border-top: 1px solid var(--main-border);
+}
+
+.main-content .border-bottom {
+  border-bottom: 1px solid var(--main-border);
+}
+
+.main-content .shadow-sm {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.main-content .shadow-md {
+  box-shadow: var(--main-shadow);
+}
+
+.main-content .shadow-lg {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* =============================================
+   GRADIENTS DE BACKGROUND
+   ============================================= */
+
+.main-container.gradient-1 {
+  --main-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --main-text: #ffffff;
+  --main-card-bg: rgba(255, 255, 255, 0.1);
+  --main-border: rgba(255, 255, 255, 0.2);
+}
+
+.main-container.gradient-2 {
+  --main-bg: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --main-text: #ffffff;
+  --main-card-bg: rgba(255, 255, 255, 0.1);
+  --main-border: rgba(255, 255, 255, 0.2);
+}
+
+.main-container.gradient-3 {
+  --main-bg: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --main-text: #ffffff;
+  --main-card-bg: rgba(255, 255, 255, 0.1);
+  --main-border: rgba(255, 255, 255, 0.2);
+}
+
+/* =============================================
+   LOADING STATE
+   ============================================= */
+
+.main-container.loading .main-content {
+  position: relative;
+  pointer-events: none;
+}
+
+.main-container.loading .main-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container.loading.dark .main-content::after {
+  background: rgba(26, 32, 44, 0.8);
+}
+
+/* =============================================
+   SCROLLBAR PERSONALIZADA
+   ============================================= */
+
+.main-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.main-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+.main-container::-webkit-scrollbar-thumb {
+  background: var(--main-accent);
+  border-radius: 5px;
+  transition: var(--transition);
+}
+
+.main-container::-webkit-scrollbar-thumb:hover {
+  background: #3182ce;
+}
+
+/* =============================================
+   EFEITO DE NEON PARA DARK MODE
+   ============================================= */
+
+.main-container.neon .main-content > .card {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--main-card-bg), var(--main-card-bg)) padding-box,
+              linear-gradient(135deg, var(--main-accent), #9f7aea, #ed64a6) border-box;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(66, 153, 225, 0.1);
+}
+
+/* =============================================
+   PRINT STYLES
+   ============================================= */
+
+@media print {
+  .main-container {
+    padding: 0;
+    background: white !important;
+  }
+  
+  .main-content {
+    padding: 0;
+    max-width: 100%;
+    box-shadow: none !important;
+  }
+  
+  .main-content > .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid;
+  }
+}

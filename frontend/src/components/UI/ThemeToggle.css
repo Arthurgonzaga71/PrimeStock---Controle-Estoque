@@ -1,0 +1,61 @@
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-hover);
+  transform: translateY(-1px);
+}
+
+.toggle-track {
+  width: 50px;
+  height: 24px;
+  background: var(--toggle-bg);
+  border-radius: 12px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--toggle-thumb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle.dark .toggle-thumb {
+  transform: translateX(26px);
+}
+
+.toggle-label {
+  font-weight: 500;
+}
+
+/* Variáveis CSS para os temas */
+:root {
+  --toggle-bg: #ccc;
+  --toggle-thumb: #fff;
+}
+
+:root.dark {
+  --toggle-bg: #4a5568;
+  --toggle-thumb: #2d3748;
+}

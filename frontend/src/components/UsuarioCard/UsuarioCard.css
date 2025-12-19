@@ -1,0 +1,283 @@
+/* components/UsuarioCard/UsuarioCard.css */
+.usuario-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #e74c3c;
+}
+
+.usuario-card.liberado {
+  border-left-color: #27ae60;
+}
+
+.usuario-card.bloqueado {
+  border-left-color: #95a5a6;
+}
+
+.usuario-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Header do Card */
+.usuario-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.usuario-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.usuario-info h3 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.usuario-email {
+  margin: 0 0 10px 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.usuario-metadata {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.perfil-badge {
+  padding: 4px 8px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.departamento {
+  padding: 4px 8px;
+  background: #ecf0f1;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: #7f8c8d;
+}
+
+/* Controles */
+.usuario-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.liberacao-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.liberacao-status {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.liberado .liberacao-status {
+  color: #27ae60;
+}
+
+.bloqueado .liberacao-status {
+  color: #e74c3c;
+}
+
+/* Switch Toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #27ae60;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Botões */
+.btn-config, .btn-remover {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.btn-config:hover {
+  background: #ecf0f1;
+}
+
+.btn-remover:hover {
+  background: #f8d7da;
+  color: #e74c3c;
+}
+
+/* Painel de Configurações */
+.config-panel {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e1e8ed;
+}
+
+.config-panel h4 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.config-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.config-item label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.config-item input {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.config-item input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.btn-aplicar {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+.btn-aplicar:hover {
+  background: #2980b9;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .usuario-card {
+    padding: 15px;
+  }
+  
+  .usuario-controls {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .config-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* components/UsuarioCard/UsuarioCard.css - ADICIONE ESTE BLOCO */
+.admin-notice {
+  margin-top: 15px;
+  padding: 10px;
+  background: #e3f2fd;
+  border-radius: 6px;
+  border-left: 4px solid #2196f3;
+}
+
+.admin-notice p {
+  margin: 0;
+  color: #1976d2;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Desabilitar toggle para admin/coordenador */
+.switch input:disabled + .slider {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.switch input:disabled + .slider:before {
+  background-color: #f8f9fa;
+}

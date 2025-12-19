@@ -1,0 +1,266 @@
+/* 📁 frontend/src/components/QRCode/QRCodeManager.css */
+.qrcode-manager {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.manager-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.manager-header h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.manager-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+/* Tabs */
+.tabs-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.tab {
+  flex: 1;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.tab.active {
+  background: white;
+  color: #3498db;
+  border-bottom: 3px solid #3498db;
+}
+
+.tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tab-content {
+  padding: 30px;
+}
+
+/* Gerador */
+.generate-tab h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.item-selector {
+  margin-bottom: 30px;
+}
+
+.item-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.item-selector select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+}
+
+.qrcode-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.qrcode-card {
+  text-align: center;
+  padding: 25px;
+  border: 2px solid #3498db;
+  border-radius: 12px;
+  background: #f8f9fa;
+  max-width: 400px;
+}
+
+.item-info {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.item-info h4 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+}
+
+.item-info p {
+  margin: 8px 0;
+  color: #495057;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.status-badge.disponivel {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.em_uso {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.manutencao {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.download-btn {
+  padding: 12px 24px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.download-btn:hover {
+  background: #2980b9;
+}
+
+/* Detalhes */
+.details-tab h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.scanned-item-details {
+  display: flex;
+  justify-content: center;
+}
+
+.detail-card {
+  background: white;
+  border: 2px solid #27ae60;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.detail-card h4 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.detail-item {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.detail-item strong {
+  color: #495057;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-warning, .btn-secondary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #3498db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2980b9;
+}
+
+.btn-warning {
+  background: #f39c12;
+  color: white;
+}
+
+.btn-warning:hover {
+  background: #e67e22;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+  }
+}

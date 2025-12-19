@@ -1,0 +1,329 @@
+/* frontend/src/components/Charts/Charts.css */
+
+/* ===== VARIÁVEIS E CONFIGURAÇÕES GLOBAIS ===== */
+.chart-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e1e5e9;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.chart-container h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== PLACEHOLDER E ESTADOS VAZIOS ===== */
+.chart-placeholder {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 2px dashed #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.chart-placeholder:hover {
+  border-color: #cbd5e1;
+  background: #f1f5f9;
+}
+
+.no-data {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+  padding: 20px;
+}
+
+.no-data::before {
+  content: "📊";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+/* ===== GRÁFICO DE BARRAS - ITENS POR CATEGORIA ===== */
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 16px;
+  height: 180px;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.chart-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 80px;
+}
+
+.bar-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #475569;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-container {
+  height: 120px;
+  width: 32px;
+  background: #f1f5f9;
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.bar-fill {
+  width: 100%;
+  background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  border-radius: 5px 5px 0 0;
+  transition: all 0.5s ease;
+  min-height: 4px;
+  position: relative;
+}
+
+.bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  border-radius: 5px 5px 0 0;
+}
+
+.bar-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: #f8fafc;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+/* ===== GRÁFICO DE PIZZA - MOVIMENTAÇÕES E STATUS ===== */
+.pie-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.pie-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.pie-item:hover {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  transform: translateX(4px);
+}
+
+.pie-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.pie-item span {
+  font-size: 0.875rem;
+  color: #374151;
+  font-weight: 500;
+  flex: 1;
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes barGrowth {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-container {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.bar-fill {
+  animation: barGrowth 0.8s ease-out;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .chart-bars {
+    gap: 8px;
+    height: 160px;
+  }
+  
+  .chart-bar {
+    max-width: 60px;
+  }
+  
+  .bar-container {
+    width: 24px;
+    height: 100px;
+  }
+  
+  .bar-label {
+    font-size: 0.7rem;
+  }
+  
+  .pie-chart {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-bars {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 12px;
+  }
+  
+  .chart-bar {
+    flex: 0 0 calc(33.333% - 8px);
+    max-width: calc(33.333% - 8px);
+  }
+}
+
+/* ===== MODOS DE COR (PARA FUTURO DARK MODE) ===== */
+.chart-container.dark {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.chart-container.dark h3 {
+  color: #f1f5f9;
+}
+
+.chart-container.dark .chart-placeholder {
+  background: #0f172a;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.chart-container.dark .bar-container {
+  background: #334155;
+  border-color: #475569;
+}
+
+.chart-container.dark .bar-value {
+  background: #1e293b;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.chart-container.dark .pie-item {
+  background: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.chart-container.dark .pie-item:hover {
+  background: #334155;
+}
+
+/* ===== ESTADOS INTERATIVOS ===== */
+.chart-bar {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.chart-bar:hover {
+  transform: translateY(-4px);
+}
+
+.chart-bar:hover .bar-fill {
+  filter: brightness(1.1);
+}
+
+.chart-bar:hover .bar-value {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+/* ===== LEGENDAS E TOOLTIPS (MELHORIAS FUTURAS) ===== */
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}

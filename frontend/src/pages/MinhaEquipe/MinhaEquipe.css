@@ -1,0 +1,393 @@
+/* pages/MinhaEquipe/MinhaEquipe.css - VERSÃO COMPLETA COM 4 PERMISSÕES */
+.minha-equipe-page {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.page-header h1 {
+  color: white;
+  margin-bottom: 12px;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.page-header p {
+  color: rgba(255,255,255,0.9);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* 🆕 ESTATÍSTICAS ATUALIZADAS */
+.estatisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.estatistica-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center;
+  border-left: 6px solid #3498db;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.estatistica-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: inherit;
+  opacity: 0.8;
+}
+
+.estatistica-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* 🆕 CORES PARA CADA PERMISSÃO */
+.estatistica-card.consultar {
+  border-left-color: #3498db;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+}
+
+.estatistica-card.solicitar {
+  border-left-color: #27ae60;
+  background: linear-gradient(135deg, #27ae60 0%, #219a52 100%);
+  color: white;
+}
+
+.estatistica-card.cadastrar {
+  border-left-color: #e67e22;
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+  color: white;
+}
+
+.estatistica-card.editar {
+  border-left-color: #9b59b6;
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+  color: white;
+}
+
+.estatistica-card:not(.consultar):not(.solicitar):not(.cadastrar):not(.editar) {
+  background: white;
+  color: #2c3e50;
+}
+
+.estatistica-valor {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.estatistica-card:not(.consultar):not(.solicitar):not(.cadastrar):not(.editar) .estatistica-valor {
+  color: #2c3e50;
+}
+
+.estatistica-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  opacity: 0.9;
+}
+
+.estatistica-card:not(.consultar):not(.solicitar):not(.cadastrar):not(.editar) .estatistica-label {
+  color: #7f8c8d;
+}
+
+/* Controles */
+.controles-equipe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 25px;
+  flex-wrap: wrap;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.filtros-busca {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.busca-input {
+  padding: 14px 20px;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  font-size: 1rem;
+  min-width: 320px;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.busca-input:focus {
+  outline: none;
+  border-color: #3498db;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.filtro-select {
+  padding: 14px 20px;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.filtro-select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.btn-adicionar {
+  background: linear-gradient(135deg, #27ae60 0%, #219a52 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+.btn-adicionar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+  background: linear-gradient(135deg, #219a52 0%, #1e8449 100%);
+}
+
+/* Grid de Usuários */
+.equipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.equipe-vazia {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 2px dashed #e1e8ed;
+}
+
+.equipe-vazia h3 {
+  color: #2c3e50;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.equipe-vazia p {
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.equipe-vazia .btn-adicionar {
+  font-size: 1.1rem;
+  padding: 16px 32px;
+}
+
+/* Mensagens */
+.mensagem {
+  padding: 18px 24px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.mensagem.sucesso {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+  border-left: 6px solid #28a745;
+}
+
+.mensagem.erro {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  color: #721c24;
+  border-left: 6px solid #dc3545;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* 🆕 BADGES DE PERMISSÃO */
+.permissoes-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.permissao-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.permissao-badge.ativa {
+  background: #27ae60;
+  color: white;
+}
+
+.permissao-badge.inativa {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Responsivo */
+@media (max-width: 1200px) {
+  .equipe-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .minha-equipe-page {
+    padding: 15px;
+  }
+  
+  .page-header {
+    padding: 20px 15px;
+    margin-bottom: 30px;
+  }
+  
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .estatisticas-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+  
+  .estatistica-card {
+    padding: 20px 15px;
+  }
+  
+  .estatistica-valor {
+    font-size: 2.2rem;
+  }
+  
+  .controles-equipe {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .filtros-busca {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .busca-input,
+  .filtro-select {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .equipe-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .equipe-vazia {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .estatisticas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .estatistica-valor {
+    font-size: 2rem;
+  }
+  
+  .btn-adicionar {
+    width: 100%;
+    text-align: center;
+  }
+}

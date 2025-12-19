@@ -1,0 +1,89 @@
+/* ============================================= */
+/* DESIGN SYSTEM - SISTEMA DE ESTOQUE TI */
+/* ============================================= */
+
+:root {
+  /* 🎨 CORES PRIMÁRIAS - SUA PALETA */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #dbeafe;
+  
+  --secondary: #64748b;
+  --secondary-hover: #475569;
+  
+  /* 🟢 ESTADOS E STATUS */
+  --success: #10b981;
+  --success-light: #d1fae5;
+  
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  
+  --danger: #ef4444;
+  --danger-light: #fee2e2;
+  
+  /* 📱 FUNDOS E TEXTOS */
+  --background: #f8fafc;
+  --background-card: #ffffff;
+  --background-sidebar: #1e293b;
+  
+  --text-primary: #1e293b;
+  --text-secondary: #475569;
+  --text-light: #64748b;
+  --text-inverse: #ffffff;
+  
+  /* 📏 BORDAS E SOMBRAS */
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  
+  /* 🔄 ANIMAÇÕES */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  
+  /* 📐 LAYOUT */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --sidebar-width: 280px;
+  --header-height: 70px;
+}
+
+/* ============================================= */
+/* RESET E ESTILOS GLOBAIS */
+/* ============================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ============================================= */
+/* SCROLLBAR PERSONALIZADA */
+/* ============================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--border-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-hover);
+}
